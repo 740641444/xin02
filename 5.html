@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script>
+	
+function myArray(){
+	this.length=arguments.length
+    for(var i=0;i<this.length;i++){
+    	this[i]=arguments[i]
+    }
+	
+}
+myArray.prototype={
+	getValue:function(type){
+		var type=type||"max"
+		var value=this[0];
+		for(var i=0;i<this.length;i++){
+			for(var j=i+1;j<this.length;j++){
+					if(this[i]>this[j]){
+						if(type=="min"){
+							value=this[j]
+						}else if(type=="max"){
+							value=this[i]
+						}
+					}					
+				}
+			}
+		}
+		return value
+	}
+}
+
+var arr01=new myArray(40,1,2,3,8,56,98)
+//var arr01=[1,2]
+console.log(arr01.getValue("min"))
+//console.log(arr01.length)
+</script>
